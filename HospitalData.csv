@@ -1,0 +1,145 @@
+ID,Name,BedNumber,RoomNumber,AdmissionDate,Nurse,LastExaminer,PhoneNumber,Address,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,VIP,StaffQuota,DischargeDate
+6735,John Doe,101,201,06-02-2024,Emily White,Dr. Smith,924-883-9833,"123 Main St, Anytown","$4,607","$3,500","$1,500","$2,000",Yes,No,14-06-2024
+2170,Jane Smith,102,202,06-12-2023,Mark Brown,Dr. Johnson,989-307-1312,"456 Elm St, Another City","$2,913","$6,000","$1,500","$1,500",No,Yes,12-11-2024
+7675,Robert Johnson,103,203,25-02-2024,Lisa Green,Dr. Lee,923-716-5265,"789 Oak Ave, Yet Another Town","$6,136","$3,000","$1,000","$1,000",No,No,17-06-2024
+3625,Emma Johnson,104,204,20-12-2023,Elowen,Dr. Alexander Smith,467-941-2508,123 Main Street,"$3,154","$2,849","$5,942","$6,713",No,No,14-08-2024
+6754,Liam Smith,105,205,22-05-2023,Seraphina,Dr. Emily Johnson,907-955-0377,456 Elm Avenue,"$3,541","$5,515","$6,474","$5,774",No,No,26-12-2024
+8650,Olivia Brown,106,206,26-03-2024,Isolde,Dr. Jacob Brown,484-350-5021,789 Oak Lane,"$2,285","$5,839","$3,679","$2,086",Yes,No,25-05-2024
+7874,Noah Lee,107,207,24-08-2023,Astrid,Dr. Olivia Williams,555-282-3810,101 Maple Drive,"$1,760","$4,282","$4,704","$5,306",No,Yes,17-11-2024
+7753,Ava Martinez,108,208,24-03-2024,Ophelia,Dr. Ethan Miller,740-056-5231,202 Pine Street,"$2,603","$3,530","$1,020","$4,497",No,No,30-12-2024
+1904,Ethan Davis,109,209,17-10-2023,Lyra,Dr. Sophia Davis,760-728-1259,303 Cedar Avenue,"$2,047","$3,974","$3,796","$5,755",No,No,19-11-2024
+5651,Isabella White,110,210,09-02-2024,Evadne,Dr. William Wilson,959-520-5151,404 Birch Lane,"$3,341","$2,436","$4,376","$2,384",No,No,02-01-2025
+2269,Oliver Harris,111,211,20-08-2023,Thaddeus,Dr. Mia Martinez,877-885-0878,505 Walnut Drive,"$6,138","$6,537","$4,849","$6,118",No,Yes,21-05-2024
+9762,Sophia Taylor,112,212,07-02-2024,Cassian,Dr. Michael Anderson,965-706-9937,606 Willow Street,"$6,382","$6,919","$2,713","$1,475",No,Yes,17-08-2024
+8695,Elijah Clark,113,213,21-11-2023,Ottilie,Dr. Emma Taylor,572-324-9196,707 Cherry Avenue,"$1,467","$5,024","$3,385","$6,650",No,No,11-02-2024
+3834,Mia Adams,114,214,26-11-2023,Veronique,Dr. Noah Thomas,795-178-4872,808 Aspen Lane,"$4,789","$1,035","$4,210","$6,770",No,Yes,21-05-2024
+9840,William Lewis,115,215,11-12-2023,Romola,Dr. Ava Garcia,898-935-3777,909 Magnolia Drive,"$2,588","$5,390","$2,336","$1,039",No,Yes,07-11-2024
+4063,Charlotte Hall,116,216,08-07-2023,Nairi,Dr. Benjamin Rodriguez,903-984-2873,111 Oak Street,"$5,477","$6,333","$1,791","$5,000",No,Yes,27-11-2024
+9235,James Turner,117,217,27-04-2024,Deneb,Dr. Isabella Lopez,433-160-1428,222 Pine Avenue,"$4,727","$4,424","$4,426","$5,548",Yes,Yes,09-11-2024
+8716,Amelia Green,118,218,29-10-2023,Ahona,Dr. James Hernandez,650-959-2166,333 Cedar Lane,"$3,783","$4,315","$5,434","$1,902",No,Yes,24-07-2024
+4658,Benjamin King,119,219,04-09-2023,Fleur,Dr. Charlotte Young,797-481-0916,444 Maple Drive,"$4,479","$5,836","$5,817","$2,595",Yes,No,25-04-2024
+1120,Harper Scott,120,220,27-05-2023,Lilac,Dr. Logan King,267-060-6432,555 Elm Street,"$2,572","$1,986","$5,465","$3,172",No,Yes,18-11-2024
+9363,Henry Allen,121,221,11-11-2023,Posey,Dr. Amelia Hill,233-583-1972,666 Walnut Avenue,"$2,051","$6,690","$3,496","$4,578",No,Yes,08-06-2024
+9996,Evelyn Baker,122,222,11-06-2023,Snow,Dr. Lucas Scott,140-736-5527,777 Willow Lane,"$6,629","$5,167","$2,399","$5,023",No,No,11-07-2024
+5518,Alexander Young,123,223,30-03-2024,Blue,Dr. Harper Green,599-984-6539,888 Cherry Drive,"$5,827","$6,271","$1,479","$4,762",No,Yes,29-01-2024
+7725,Abigail Moore,124,224,17-09-2023,Banks,Dr. Gabriel Adams,241-434-3060,999 Birch Street,"$5,281","$5,042","$3,876","$2,533",Yes,No,08-04-2024
+9337,Daniel Nelson,125,225,26-07-2023,Eleven,Dr. Evelyn Carter,946-062-8114,1212 Maple Avenue,"$4,832","$1,948","$3,925","$2,243",No,No,17-02-2024
+4056,Elizabeth Foster,126,226,18-05-2023,Venus,Dr. Daniel Martinez,997-908-9420,1313 Cedar Lane,"$4,144","$2,481","$5,973","$3,425",Yes,Yes,01-08-2024
+7792,Michael Rivera,127,227,05-06-2023,Winslet,Dr. Grace Flores,198-888-0045,1414 Oak Drive,"$2,518","$4,270","$4,292","$1,833",No,No,13-08-2024
+6599,Emily Cooper,128,228,25-08-2023,Birdie,Dr. Jackson Lee,374-552-1296,1515 Pine Street,"$4,003","$6,602","$2,645","$2,632",Yes,Yes,02-05-2024
+6877,Matthew Reed,129,229,28-03-2024,Bee,Dr. Lily Mitchell,457-548-6272,1616 Elm Avenue,"$3,761","$5,375","$4,040","$6,245",No,No,07-11-2024
+9003,Sofia Coleman,130,230,27-04-2024,Darcy,Dr. Oliver Lewis,908-120-9529,1717 Walnut Lane,"$5,327","$6,588","$1,430","$2,899",Yes,Yes,27-07-2024
+1563,Joseph Wright,131,231,06-01-2024,Juni,Dr. Chloe White,804-890-3594,1818 Willow Drive,"$1,070","$3,514","$4,361","$3,951",Yes,No,22-12-2024
+1714,Scarlett Mitchell,132,232,16-10-2023,Eilish,Dr. Samuel Moore,218-963-2710,1919 Cherry Street,"$4,378","$3,854","$4,872","$4,560",Yes,Yes,18-03-2024
+8285,David Hill,133,233,24-01-2024,Chicago,Dr. Zoey Clark,547-408-2772,2020 Birch Avenue,"$1,136","$3,855","$1,742","$1,444",No,No,05-02-2024
+6061,Madison Ward,134,234,28-08-2023,Zendaya,Dr. Smith,327-643-7490,2121 Maple Lane,"$6,948","$4,016","$3,448","$1,004",No,No,04-02-2024
+7548,Samuel Bell,135,235,27-08-2023,Deren,Dr. Johnson,380-360-1510,2222 Cedar Drive,"$3,264","$3,506","$2,351","$1,089",No,No,24-03-2024
+2481,Grace Murphy,136,236,28-11-2023,Nerea,Dr. Lee,859-895-3694,2323 Oak Street,"$5,209","$5,424","$1,431","$5,269",No,No,03-07-2024
+5842,Jackson Rogers,137,237,16-07-2023,Sonali,Dr. Alexander Smith,215-807-0222,2424 Pine Avenue,"$3,624","$3,606","$3,019","$3,048",Yes,No,31-03-2024
+2365,Lily Richardson,138,238,11-04-2024,Darcy,Dr. Emily Johnson,949-280-0676,2525 Elm Lane,"$3,338","$1,103","$1,635","$3,286",No,No,15-02-2024
+4833,Andrew Wood,139,239,22-07-2023,Juni,Dr. Jacob Brown,675-005-4326,2626 Walnut Drive,"$5,902","$3,626","$1,157","$3,445",No,Yes,08-04-2024
+3418,Victoria Brooks,140,240,15-12-2023,Emily White,Dr. Olivia Williams,965-828-5789,2727 Willow Street,"$4,918","$1,696","$2,997","$6,276",No,No,26-02-2024
+7356,Gabriel Watson,141,241,18-12-2023,Mark Brown,Dr. Ethan Miller,654-367-5396,2828 Cherry Avenue,"$5,145","$3,996","$6,686","$3,882",Yes,Yes,02-03-2024
+3338,Aria Simmons,142,242,27-07-2023,Lisa Green,Dr. Sophia Davis,271-153-5787,2929 Birch Lane,"$3,541","$2,034","$5,741","$5,290",No,No,27-07-2024
+8463,Christopher Price,143,243,01-06-2023,Elowen,Dr. William Wilson,354-838-5256,3030 Maple Drive,"$3,993","$3,107","$1,336","$6,357",No,Yes,13-07-2024
+9907,Brooklyn Gray,144,244,18-10-2023,Seraphina,Dr. Mia Martinez,170-351-0592,3131 Cedar Street,"$5,291","$3,205","$6,776","$2,984",Yes,Yes,04-10-2024
+7319,Zara Montgomery,145,245,04-10-2023,Isolde,Dr. Michael Anderson,410-286-4814,3232 Oak Avenue,"$5,286","$6,678","$5,978","$5,640",Yes,No,05-07-2024
+1814,Felix Bennett,146,246,12-07-2023,Astrid,Dr. Emma Taylor,648-969-2351,3333 Pine Lane,"$4,747","$1,217","$5,731","$2,108",Yes,Yes,30-06-2024
+1802,Luna Valencia,147,247,15-10-2023,Ophelia,Dr. Noah Thomas,906-611-5906,3434 Elm Drive,"$3,118","$1,952","$3,651","$6,795",No,Yes,22-09-2024
+1065,Jasper Donovan,148,248,02-09-2023,Lyra,Dr. Ava Garcia,930-374-8542,3535 Walnut Street,"$6,145","$1,433","$4,803","$5,630",No,Yes,01-12-2024
+1204,Isla Mercer,149,249,13-04-2024,Evadne,Dr. Benjamin Rodriguez,186-277-5619,3636 Willow Avenue,"$1,880","$5,851","$5,838","$6,411",Yes,Yes,21-07-2024
+6715,Orion Wallace,150,250,12-08-2023,Thaddeus,Dr. Isabella Lopez,701-633-3077,3737 Cherry Lane,"$5,183","$3,607","$4,629","$4,487",Yes,No,20-07-2024
+3448,Seraphina Hayes,151,251,08-04-2024,Cassian,Dr. James Hernandez,933-087-7952,3838 Birch Drive,"$3,617","$4,214","$5,578","$3,525",No,Yes,19-09-2024
+3662,Atticus Maxwell,152,252,07-09-2023,Ottilie,Dr. Charlotte Young,272-218-3106,3939 Maple Street,"$6,089","$5,636","$6,599","$6,858",No,No,17-07-2024
+3633,Elowen Rivers,153,253,29-07-2023,Veronique,Dr. Logan King,601-197-6396,4040 Cedar Avenue,"$5,941","$4,495","$6,699","$6,860",Yes,No,13-09-2024
+2827,Cassian Archer,154,254,23-09-2023,Romola,Dr. Amelia Hill,355-557-4607,4141 Oak Lane,"$6,703","$2,495","$4,358","$5,685",Yes,Yes,08-01-2025
+3568,Lyra Hawthorne,155,255,01-09-2023,Nairi,Dr. Lucas Scott,966-360-3568,4242 Pine Drive,"$3,617","$4,704","$6,327","$5,317",No,No,26-06-2024
+3625,Silas Calder,156,256,27-03-2024,Deneb,Dr. Harper Green,175-606-9021,4343 Elm Street,"$3,971","$2,979","$2,182","$3,498",No,Yes,10-09-2024
+8632,Freya Winslow,157,257,21-01-2024,Ahona,Dr. Gabriel Adams,258-971-2733,4444 Walnut Avenue,"$3,826","$6,659","$1,768","$6,682",No,No,03-04-2024
+7166,Evander Stone,158,258,14-05-2023,Fleur,Dr. Evelyn Carter,277-579-0939,4545 Willow Lane,"$2,051","$5,289","$4,042","$1,823",Yes,Yes,26-11-2024
+6149,Astrid Delaney,159,259,26-06-2023,Lilac,Dr. Daniel Martinez,561-710-1727,4646 Cherry Drive,"$6,351","$5,702","$3,426","$6,392",No,Yes,18-09-2024
+6701,Lucian Barrett,160,260,26-08-2023,Posey,Dr. Grace Flores,367-119-5283,4747 Birch Street,"$4,139","$4,406","$5,846","$6,303",Yes,Yes,28-09-2024
+6001,Calliope Wilde,161,261,28-12-2023,Snow,Dr. Jackson Lee,190-869-1987,4848 Maple Avenue,"$1,389","$5,687","$6,311","$1,437",Yes,Yes,18-06-2024
+9414,Orion Thorne,162,262,13-05-2023,Blue,Dr. Lily Mitchell,352-798-6230,4949 Cedar Lane,"$1,962","$3,899","$2,350","$2,089",Yes,Yes,28-05-2024
+8526,Imogen Sinclair,163,263,10-02-2024,Banks,Dr. Oliver Lewis,193-888-0537,5050 Oak Drive,"$3,381","$5,579","$5,555","$6,262",Yes,Yes,17-05-2024
+2309,Dashiell Grey,164,264,20-08-2023,Eleven,Dr. Chloe White,750-066-9740,5151 Pine Street,"$3,014","$3,045","$5,284","$6,248",Yes,No,22-02-2024
+9670,Ophelia Wren,165,265,03-10-2023,Venus,Dr. Samuel Moore,852-202-2103,5252 Elm Avenue,"$4,811","$6,134","$4,585","$1,165",Yes,No,18-03-2024
+2930,Ronan Ellington,166,266,15-07-2023,Winslet,Dr. Zoey Clark,599-988-6895,5353 Walnut Lane,"$1,848","$5,517","$3,479","$5,905",No,No,16-02-2024
+7105,Isolde Hart,167,267,12-10-2023,Birdie,Dr. Smith,211-393-2759,5454 Willow Drive,"$2,199","$2,101","$1,968","$6,170",Yes,Yes,18-07-2024
+7227,Cassius Fox,168,268,21-11-2023,Bee,Dr. Johnson,553-468-5264,5555 Cherry Street,"$2,193","$1,765","$1,881","$2,171",Yes,Yes,26-01-2024
+9536,Seren Langley,169,269,20-01-2024,Darcy,Dr. Lee,670-745-4152,5656 Birch Avenue,"$3,050","$3,565","$4,490","$6,583",Yes,Yes,03-12-2024
+3859,Leander Frost,170,270,22-05-2023,Juni,Dr. Alexander Smith,517-787-6232,5757 Maple Lane,"$2,251","$3,688","$4,182","$6,603",Yes,No,04-01-2025
+8938,Elara Beaumont,171,271,17-03-2024,Eilish,Dr. Emily Johnson,945-401-4605,5858 Cedar Drive,"$6,049","$5,535","$5,454","$1,132",Yes,Yes,26-05-2024
+6847,Soren Whitman,172,272,03-03-2024,Chicago,Dr. Jacob Brown,496-520-0711,5959 Oak Street,"$1,194","$4,268","$1,933","$5,046",No,No,30-10-2024
+7737,Isadora Hale,173,273,30-11-2023,Zendaya,Dr. Olivia Williams,822-922-0513,6060 Pine Avenue,"$5,485","$6,349","$1,310","$4,632",No,No,21-05-2024
+3075,Thaddeus Finch,174,274,21-09-2023,Deren,Dr. Ethan Miller,876-024-4975,6161 Elm Lane,"$1,529","$1,972","$1,305","$2,629",Yes,Yes,14-05-2024
+9742,Elowen Merritt,175,275,20-02-2024,Nerea,Dr. Sophia Davis,247-888-7636,6262 Walnut Drive,"$6,796","$6,270","$1,584","$2,093",Yes,Yes,08-08-2024
+4752,Evadne Sterling,176,276,23-04-2024,Sonali,Dr. William Wilson,520-380-8118,6363 Willow Street,"$1,900","$5,637","$4,877","$1,250",Yes,No,10-06-2024
+4305,Lysander Hale,177,277,14-04-2024,Darcy,Dr. Mia Martinez,177-824-7437,6464 Cherry Avenue,"$1,008","$2,481","$1,657","$5,747",No,Yes,21-08-2024
+9369,Octavia Merrick,178,278,16-11-2023,Juni,Dr. Michael Anderson,703-203-5160,6565 Birch Lane,"$5,455","$4,847","$3,313","$6,884",Yes,No,05-07-2024
+7257,Peregrine Wilde,179,279,05-05-2024,Emily White,Dr. Emma Taylor,458-824-4093,6666 Maple Drive,"$2,413","$3,641","$4,081","$5,357",Yes,Yes,22-07-2024
+8686,Isabeau Hawthorne,180,280,20-06-2023,Mark Brown,Dr. Noah Thomas,482-330-1335,6767 Cedar Street,"$2,012","$6,822","$5,781","$3,543",Yes,Yes,14-10-2024
+4766,Caius Lockwood,181,281,20-07-2023,Lisa Green,Dr. Ava Garcia,126-639-5693,6868 Oak Avenue,"$2,723","$5,209","$3,417","$5,922",No,Yes,30-08-2024
+9837,Seraphina Vale,182,282,19-12-2023,Elowen,Dr. Benjamin Rodriguez,158-036-7069,6969 Pine Lane,"$2,725","$6,780","$3,729","$4,165",No,Yes,01-02-2024
+1845,Thelonius Grey,183,283,20-02-2024,Seraphina,Dr. Isabella Lopez,454-965-3527,7070 Elm Drive,"$6,826","$4,223","$6,144","$1,771",Yes,No,24-08-2024
+2120,Odessa Sinclair,184,284,21-09-2023,Isolde,Dr. James Hernandez,126-657-9518,7171 Walnut Street,"$3,024","$3,941","$1,630","$1,494",Yes,Yes,11-06-2024
+3028,Lucius Callahan,185,285,11-02-2024,Astrid,Dr. Charlotte Young,217-720-2822,7272 Willow Avenue,"$5,562","$1,896","$5,881","$3,575",No,Yes,14-09-2024
+1304,Isolde Hart,186,286,24-01-2024,Ophelia,Dr. Logan King,660-164-9457,7373 Cherry Lane,"$6,755","$6,708","$2,913","$6,628",No,Yes,01-10-2024
+5741,Thaddeus Finch,187,287,21-07-2023,Lyra,Dr. Amelia Hill,192-412-3037,7474 Birch Drive,"$3,476","$3,656","$6,497","$4,219",No,Yes,19-07-2024
+2923,Elara Beaumont,188,288,23-12-2023,Evadne,Dr. Lucas Scott,480-833-8706,7575 Maple Street,"$6,416","$2,295","$1,747","$5,951",Yes,No,17-07-2024
+2496,Evander Stone,189,289,02-07-2023,Thaddeus,Dr. Harper Green,959-228-9319,7676 Cedar Avenue,"$6,580","$1,231","$4,597","$5,752",Yes,No,11-01-2025
+6599,Seren Langley,190,290,16-06-2023,Cassian,Dr. Gabriel Adams,188-121-1636,7777 Oak Lane,"$1,322","$5,856","$2,571","$6,462",No,No,13-07-2024
+2273,Orion Thorne,191,291,17-10-2023,Ottilie,Dr. Evelyn Carter,198-089-3838,7878 Pine Drive,"$3,940","$5,912","$1,720","$6,583",No,No,09-11-2024
+3573,Isabeau Hawthorne,192,292,20-11-2023,Veronique,Dr. Daniel Martinez,318-892-1772,7979 Elm Street,"$2,268","$5,014","$6,558","$6,484",Yes,Yes,08-11-2024
+9909,Cassian Archer,193,293,06-08-2023,Romola,Dr. Grace Flores,575-255-9204,8080 Walnut Avenue,"$2,266","$4,989","$2,559","$6,012",No,No,30-07-2024
+3489,Lyra Hawthorne,194,294,08-03-2024,Nairi,Dr. Jackson Lee,863-891-3505,8181 Willow Lane,"$1,455","$2,264","$6,311","$6,094",No,Yes,24-10-2024
+6145,Silas Calder,195,295,22-05-2023,Deneb,Dr. Lily Mitchell,207-277-6169,2222 Cedar Drive,"$5,326","$5,243","$5,365","$4,088",No,Yes,21-06-2024
+6222,Freya Winslow,196,296,22-09-2023,Ahona,Dr. Oliver Lewis,805-923-2732,2323 Oak Street,"$4,028","$3,180","$4,138","$6,065",No,Yes,02-02-2024
+8260,Atticus Maxwell,197,297,21-08-2023,Fleur,Dr. Chloe White,264-136-0798,2424 Pine Avenue,"$3,206","$6,305","$4,328","$3,077",No,No,01-02-2024
+2994,Elowen Rivers,198,298,27-11-2023,Lilac,Dr. Samuel Moore,884-489-0322,2525 Elm Lane,"$1,323","$4,994","$5,186","$6,253",Yes,Yes,18-04-2024
+4459,Evadne Sterling,199,299,03-09-2023,Posey,Dr. Zoey Clark,347-138-0307,2626 Walnut Drive,"$1,098","$3,301","$1,667","$1,111",No,Yes,04-01-2025
+6260,Lucian Barrett,200,300,22-04-2024,Snow,Dr. Smith,571-700-3735,2727 Willow Street,"$4,684","$3,250","$1,514","$1,627",Yes,Yes,24-07-2024
+7740,Seraphina Hayes,201,301,20-06-2023,Blue,Dr. Johnson,238-093-0626,2828 Cherry Avenue,"$3,876","$4,029","$2,619","$1,522",No,No,27-08-2024
+3286,Dashiell Grey,202,302,25-03-2024,Banks,Dr. Lee,716-639-7061,2929 Birch Lane,"$4,446","$5,889","$2,818","$4,353",No,Yes,12-12-2024
+8980,Ophelia Wren,203,303,30-08-2023,Eleven,Dr. Alexander Smith,534-769-8471,3030 Maple Drive,"$4,478","$4,681","$1,016","$3,633",No,No,23-03-2024
+7170,Ronan Ellington,204,304,21-05-2023,Venus,Dr. Emily Johnson,713-220-8299,3131 Cedar Street,"$5,269","$5,543","$3,728","$3,251",No,Yes,06-11-2024
+7983,Isadora Hale,205,305,24-08-2023,Winslet,Dr. Jacob Brown,829-565-6877,3232 Oak Avenue,"$2,707","$2,903","$2,895","$4,836",No,Yes,16-10-2024
+8479,Thelonius Grey,206,306,24-11-2023,Birdie,Dr. Olivia Williams,811-211-5987,3333 Pine Lane,"$6,342","$4,465","$1,426","$6,525",No,No,03-01-2025
+3930,Octavia Merrick,207,307,10-09-2023,Bee,Dr. Ethan Miller,226-455-7917,3434 Elm Drive,"$2,924","$5,633","$1,319","$1,073",Yes,Yes,23-11-2024
+5053,Peregrine Wilde,208,308,15-08-2023,Darcy,Dr. Sophia Davis,870-765-5862,3535 Walnut Street,"$3,205","$3,492","$2,143","$6,881",No,No,16-09-2024
+3010,Imogen Sinclair,209,309,18-11-2023,Juni,Dr. William Wilson,557-393-2007,3636 Willow Avenue,"$1,653","$1,784","$2,076","$5,971",No,Yes,17-10-2024
+7329,Leander Frost,210,310,04-08-2023,Eilish,Dr. Mia Martinez,859-495-4041,3737 Cherry Lane,"$6,555","$2,703","$5,750","$1,607",Yes,Yes,12-05-2024
+4674,Astrid Delaney,211,311,25-10-2023,Chicago,Dr. Michael Anderson,604-957-3298,3838 Birch Drive,"$6,797","$1,976","$6,291","$1,457",No,No,05-09-2024
+7507,Soren Whitman,212,312,02-12-2023,Zendaya,Dr. Emma Taylor,209-622-7634,3939 Maple Street,"$6,157","$1,211","$2,194","$2,341",No,No,16-06-2024
+7941,Isla Mercer,213,313,06-01-2024,Deren,Dr. Noah Thomas,812-220-2366,4040 Cedar Avenue,"$4,003","$5,275","$2,927","$3,699",No,Yes,12-04-2024
+3763,Jasper Donovan,214,314,20-05-2023,Nerea,Dr. Ava Garcia,796-169-8969,4141 Oak Lane,"$2,537","$6,378","$1,401","$5,420",Yes,No,20-12-2024
+4948,Zara Montgomery,215,315,15-02-2024,Sonali,Dr. Benjamin Rodriguez,791-496-5142,4242 Pine Drive,"$2,718","$5,866","$2,229","$6,201",Yes,Yes,08-02-2024
+3017,Felix Bennett,216,316,04-07-2023,Darcy,Dr. Isabella Lopez,931-352-8259,4343 Elm Street,"$4,674","$2,723","$5,496","$3,187",Yes,No,07-07-2024
+2834,Luna Valencia,217,317,22-12-2023,Juni,Dr. James Hernandez,334-188-8154,4444 Walnut Avenue,"$5,824","$3,777","$3,491","$3,553",No,Yes,04-07-2024
+9708,Jasper Donovan,218,318,11-08-2023,Emily White,Dr. Charlotte Young,525-971-5334,4545 Willow Lane,"$2,588","$6,601","$2,433","$3,188",No,No,08-06-2024
+6576,Isla Mercer,219,319,24-06-2023,Mark Brown,Dr. Logan King,481-861-6204,4646 Cherry Drive,"$1,030","$4,660","$4,105","$3,875",Yes,No,16-02-2024
+5974,Orion Wallace,220,320,26-04-2024,Lisa Green,Dr. Amelia Hill,888-444-1592,4747 Birch Street,"$5,071","$2,912","$2,614","$3,079",No,Yes,06-06-2024
+6238,Seraphina Hayes,221,321,19-11-2023,Elowen,Dr. Lucas Scott,880-846-3809,4848 Maple Avenue,"$5,886","$3,999","$3,150","$5,962",Yes,Yes,06-12-2024
+2811,Atticus Maxwell,222,322,26-09-2023,Seraphina,Dr. Harper Green,686-065-7379,4949 Cedar Lane,"$2,754","$3,069","$2,672","$1,328",Yes,Yes,08-01-2025
+5253,Elowen Rivers,223,323,17-02-2024,Isolde,Dr. Gabriel Adams,335-430-5348,5050 Oak Drive,"$2,270","$2,612","$5,091","$1,101",No,Yes,08-07-2024
+5926,Cassian Archer,224,324,13-03-2024,Astrid,Dr. Evelyn Carter,191-185-5539,5151 Pine Street,"$5,674","$3,474","$1,725","$6,804",Yes,Yes,14-06-2024
+6877,Lyra Hawthorne,225,325,12-06-2023,Ophelia,Dr. Daniel Martinez,929-895-2923,5252 Elm Avenue,"$3,328","$3,529","$2,825","$1,720",No,No,06-09-2024
+4291,Silas Calder,226,326,02-07-2023,Lyra,Dr. Grace Flores,794-777-7819,5353 Walnut Lane,"$2,465","$3,074","$2,115","$4,561",No,No,25-04-2024
+8440,Freya Winslow,227,327,31-10-2023,Evadne,Dr. Jackson Lee,746-034-4563,5454 Willow Drive,"$3,492","$2,584","$4,488","$2,922",No,Yes,02-02-2024
+8769,Evander Stone,228,328,07-10-2023,Thaddeus,Dr. Lily Mitchell,693-614-8651,5555 Cherry Street,"$4,483","$4,363","$4,066","$2,472",Yes,Yes,21-08-2024
+2316,Astrid Delaney,229,329,24-06-2023,Cassian,Dr. Oliver Lewis,241-950-2633,6363 Willow Street,"$1,069","$6,173","$5,172","$3,915",Yes,No,19-05-2024
+1737,Lucian Barrett,230,330,15-03-2024,Ottilie,Dr. Chloe White,766-412-6067,6464 Cherry Avenue,"$4,356","$5,820","$5,812","$1,790",Yes,No,26-07-2024
+8926,Calliope Wilde,231,331,04-05-2024,Veronique,Dr. Samuel Moore,469-423-3618,6565 Birch Lane,"$5,659","$6,529","$1,538","$4,027",No,Yes,08-02-2024
+6318,Orion Thorne,232,332,24-02-2024,Romola,Dr. Zoey Clark,361-061-9413,6666 Maple Drive,"$1,303","$5,264","$5,848","$4,303",No,No,21-04-2024
+7752,Imogen Sinclair,233,333,11-01-2024,Nairi,Dr. Smith,488-981-6626,6767 Cedar Street,"$6,015","$1,966","$3,377","$5,234",Yes,Yes,22-01-2024
+3324,Dashiell Grey,234,334,22-11-2023,Deneb,Dr. Johnson,183-435-8061,6868 Oak Avenue,"$1,860","$5,452","$1,153","$1,045",No,Yes,03-05-2024
+8285,Ophelia Wren,235,335,14-06-2023,Ahona,Dr. Lee,623-484-5659,6969 Pine Lane,"$4,366","$2,647","$5,681","$6,990",Yes,Yes,22-08-2024
+4205,Ronan Ellington,236,336,10-03-2024,Fleur,Dr. Alexander Smith,947-521-9267,7070 Elm Drive,"$5,415","$6,392","$4,107","$3,370",No,No,26-08-2024
+3937,Isolde Hart,237,337,12-02-2024,Lilac,Dr. Emily Johnson,211-922-9384,7171 Walnut Street,"$6,901","$2,210","$3,853","$3,013",No,Yes,12-05-2024
+1472,Cassius Fox,238,338,01-08-2023,Posey,Dr. Jacob Brown,848-469-0499,7272 Willow Avenue,"$3,376","$3,414","$1,447","$1,617",No,Yes,23-07-2024
+7679,Seren Langley,239,339,20-09-2023,Snow,Dr. Olivia Williams,926-353-4340,7373 Cherry Lane,"$4,928","$1,902","$2,670","$5,796",No,Yes,08-10-2024
+9511,Leander Frost,240,340,30-06-2023,Blue,Dr. Ethan Miller,521-005-4015,7474 Birch Drive,"$3,669","$3,709","$5,405","$3,861",No,No,03-10-2024
+5397,Elara Beaumont,241,341,19-12-2023,Banks,Dr. Sophia Davis,242-960-0705,7575 Maple Street,"$1,869","$2,336","$4,099","$3,299",Yes,No,14-10-2024
+9723,Soren Whitman,242,342,18-11-2023,Eleven,Dr. William Wilson,594-362-9476,7676 Cedar Avenue,"$5,780","$5,852","$2,170","$5,298",Yes,Yes,17-04-2024
+5571,Isadora Hale,243,343,03-04-2024,Venus,Dr. Mia Martinez,947-556-3287,7777 Oak Lane,"$3,949","$4,371","$1,282","$6,641",Yes,No,13-06-2024
+3671,Thaddeus Finch,244,344,23-06-2023,Winslet,Dr. Michael Anderson,205-222-8673,7878 Pine Drive,"$5,588","$5,197","$2,560","$5,148",No,No,03-08-2024
