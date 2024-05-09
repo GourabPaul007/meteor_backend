@@ -18,7 +18,7 @@ async function getMacAddress(ipAddress) {
     });
 }
 
-const logInDatabase = (logData) => {
+const logInDatabase = async (logData) => {
     const db2 = new sqlite3.Database("database.db");
     db2.run("INSERT INTO logs (logData) VALUES (?)", [logData], function (err) {
         if (err) {
@@ -30,5 +30,26 @@ const logInDatabase = (logData) => {
     });
 }
 
-module.exports = getMacAddress;
-module.exports = logInDatabase;
+const getIntersect = (s1,s2) => {
+    // const a1 = s1.trim().split(",")
+    // const a2 = s2.trim().split(",")
+    // const setA = new Set(a1);
+    // const intersectArrayWithDuplicates =  a2.filter(value => setA.has(value));
+    // const intersectArray = [...new Set(intersectArrayWithDuplicates)];
+    // return intersectArray.join(",");
+
+    const a1 = s1.trim().split(",")
+    const a2 = s2.trim().split(",")
+    const set1 = new Set(a1);
+    const set2 = new Set(a2);
+    const result = [];
+    set1.forEach(item => {
+        if (set2.has(item)) {
+            result.push(item);
+        }
+    });
+    console.log(result.join(","));
+    return result.join(",");
+}
+
+module.exports = {getMacAddress, logInDatabase, getIntersect};

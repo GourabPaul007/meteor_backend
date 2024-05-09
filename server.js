@@ -1,14 +1,13 @@
-const getMacAddress = require("./helper.js");
-const logInDatabase = require("./helper.js");
-
-const login = require("./login.js");
-const signup = require("./login.js");
-const isLoggedIn = require("./login.js");
+// const getMacAddress = require("./helper.js");
+// const logInDatabase = require("./helper.js");
 
 // Import necessary modules
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
+
+const {login, addUser, isLoggedIn, ab} = require("./authentication.js");
+const {getIntersect} = require("./helper.js");
 
 // Initialize Express app
 const app = express();
@@ -28,28 +27,8 @@ db.serialize(() => {
 	);
 	db.run("CREATE TABLE IF NOT EXISTS logs (logData TEXT)");
 	db.run(
-		"CREATE TABLE IF NOT EXISTS users (email TEXT PRIMARY KEY, name TEXT, password TEXT, role TEXT)"
+		"CREATE TABLE IF NOT EXISTS users (name TEXT PRIMARY KEY, email TEXT, password TEXT, role TEXT)"
 	);
-	//   -- Create a SQLite database
-	db.run(`CREATE TABLE IF NOT EXISTS patients (
-        ID INTEGER PRIMARY KEY,
-        Name TEXT,
-        BedNumber INTEGER,
-        RoomNumber INTEGER,
-        AdmissionDate TEXT,
-        Nurse TEXT,
-        LastExaminer TEXT,
-        PhoneNumber TEXT,
-        Address TEXT,
-        TotalEstimatedCost REAL,
-        TotalPayment REAL,
-        BalanceDue REAL,
-        AdvancePayment REAL,
-        VIP TEXT,
-        StaffQuota TEXT,
-        DischargeDate TEXT
-      )`);
-	// db.run(`DESC patients`);
 });
 
 const saveDB = () => {
@@ -68,25 +47,28 @@ const saveDB = () => {
 };
 
 ADMIN_SET = `*`;
-BACKOFFICE_SET = `Name,BedNumber,RoomNumber,AdmissionDate,Nurse,LastExaminer,PhoneNumber,Address,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,VIP,StaffQuota,DischargeDate`;
-DOCTOR_SET = `Name,BedNumber,RoomNumber,AdmissionDate,Nurse,LastExaminer,PhoneNumber,Address,VIP,StaffQuota,DischargeDate`;
-CLERK_SET = `Name,BedNumber,RoomNumber,AdmissionDate,Nurse,PhoneNumber,DischargeDate`;
-ACCOUNTS_SET = `Name,BedNumber,RoomNumber,AdmissionDate,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,DischargeDate`;
+BACKOFFICE_SET = `Name,BedNumber,RoomNumber,WardNumber,WardIncharge,AdmissionDate,Nurse,LastExaminer,PhoneNumber,Address,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,VIP,StaffQuota,DischargeDate`;
+DOCTOR_SET = `Name,BedNumber,RoomNumber,WardNumber,Disease,Medication,WardIncharge,AdmissionDate,Nurse,LastExaminer,PhoneNumber,Address,VIP,StaffQuota,DischargeDate`;
+NURSE_SET = `Name,BedNumber,RoomNumber,WardNumber,Disease,Medication,AdmissionDate,Nurse,LastExaminer,PhoneNumber,VIP,StaffQuota,DischargeDate`
+CLERK_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,Nurse,LastExaminer,PhoneNumber,DischargeDate`;
+ACCOUNTS_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,PhoneNumber,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,VIP,StaffQuota,DischargeDate`;
 
 // Define routes
 
 // Get all users
 app.get("/api/patients", (req, res) => {
 	role = req.query.role;
-	if(!isLoggedIn(req.body.email)){
-		res.status(401).json({ error: "Unauthorized" });
-	}
-	console.log(role);
+	console.log("role is ", role);
 	switch (role) {
 		case "nurse":
-			nurse_name = req.body.nurse_name;
+			const nurse_name = req.body.name;
+			const nurse_columns = req.body.columns;
+			if(!isLoggedIn(nurse_name)){
+				return res.status(401).json({ error: "Unauthorized" });
+			}
+			const final_set_nurse = getIntersect(NURSE_SET,nurse_columns)
 			db.all(
-				`SELECT ${DOCTOR_SET} FROM patients WHERE Nurse="${nurse_name}"`,
+				`SELECT ${final_set_nurse} FROM patients WHERE Nurse="${nurse_name}"`,
 				(err, rows) => {
 					if (err) {
 						console.error(err.message);
@@ -99,10 +81,14 @@ app.get("/api/patients", (req, res) => {
 			break;
 
 		case "doctor":
-			doctor_name = req.body.doctor_name;
-			console.log(doctor_name);
+			const doctor_name = req.body.name;
+			const doctor_columns = req.body.columns;
+			if(!isLoggedIn(doctor_name)){
+				return res.status(401).json({ error: "Unauthorized" });
+			}
+			const final_set_doctor = getIntersect(DOCTOR_SET,doctor_columns)
 			db.all(
-				`SELECT ${DOCTOR_SET} FROM patients WHERE LastExaminer="${doctor_name}"`,
+				`SELECT ${final_set_doctor} FROM patients WHERE LastExaminer="${doctor_name}"`,
 				(err, rows) => {
 					if (err) {
 						console.error(err.message);
@@ -115,8 +101,13 @@ app.get("/api/patients", (req, res) => {
 			break;
 
 		case "clerk":
-			// nurse_name = req.query.nurse_name;
-			db.all(`SELECT ${CLERK_SET} FROM patients`, (err, rows) => {
+			const clerk_name = req.body.name;
+			const clerk_columns = req.body.columns;
+			if(!isLoggedIn(clerk_name)){
+				return res.status(401).json({ error: "Unauthorized" });
+			}
+			const final_set_clerk = getIntersect(CLERK_SET,clerk_columns)
+			db.all(`SELECT ${final_set_clerk} FROM patients`, (err, rows) => {
 				if (err) {
 					console.error(err.message);
 					res.status(500).json({ error: "Internal server error" });
@@ -139,22 +130,30 @@ app.get("/api/patients", (req, res) => {
 			break;
 
 		default:
-			res.status(300).json({ error: "Unauthorised" });
+			console.log("Default Case");
+			db.all(`SELECT ${DOCTOR_SET} FROM patients`, (err, rows) => {
+				if (err) {
+					console.error(err.message);
+					res.status(500).json({ error: "Internal server error" });
+				} else {
+					res.json(rows);
+				}
+			});
 			break;
+			// res.status(300).json({ error: "Unauthorised" });
+			// break;
 	}
 });
 
 // SIGN UP
 app.post("/api/users/signup", async (req, res) => {
 	const { name, email, password, role } = req.body;
-	console.log("SignUp request: ", name, email, password, role);
 	if (!email && !password && !role && email.length == 0) {
-		res.status(400).json({ error: "Email, Password, Role is required" });
+		res.status(400).json({ error: "Name, Email, Password, Role is required" });
 	} else {
-		ip = req.ip
-		signup(name, email, password, role, ip);
-		console.log("SignUp done: ", name, email, password, role);
-		res.status(201).json({ name, email, password, role, ip });
+		const ip = req.ip;
+		const msg = await addUser(name, email, password, role, ip);
+		res.status(201).json({ "msg":msg, name, email, password, role, ip });
 	}
 });
 
@@ -164,8 +163,8 @@ app.get("/api/users/login", async (req, res) => {
 	if (!name && !email && !password && !role && email.length == 0) {
 		res.status(400).json({ error: "Name, Email, Password, Role is required" });
 	} else {
-		login(name, email, password, role);
-        res.status(201).json({ name, email, role });
+		const msg = await login(name, email, password, role);
+        res.status(201).json({ msg });
 	}
 });
 
@@ -184,8 +183,22 @@ app.get("/api/admin/getlogs", (req, res) => {
 });
 
 // Get all users
-app.get("/api/users/", (req, res) => {
-	db.get("SELECT * FROM users", (err, row) => {
+app.get("/api/admin/getusers/", (req, res) => {
+	db.all("SELECT * FROM users", (err, row) => {
+		if (err) {
+			console.error(err.message);
+			res.status(500).json({ error: "Internal server error" });
+		} else if (!row) {
+			res.status(404).json({ error: "No user found" });
+		} else {
+			res.json(row);
+		}
+	});
+});
+
+// Get all patients
+app.get("/api/admin/getpatients/", (req, res) => {
+	db.all("SELECT * FROM patients", (err, row) => {
 		if (err) {
 			console.error(err.message);
 			res.status(500).json({ error: "Internal server error" });
