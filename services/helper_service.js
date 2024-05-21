@@ -18,18 +18,6 @@ async function getMacAddress(ipAddress) {
     });
 }
 
-const logInDatabase = async (logData) => {
-    const db2 = new sqlite3.Database("database.db");
-    db2.run("INSERT INTO logs (logData) VALUES (?)", [logData], function (err) {
-        if (err) {
-            console.error(err.message);
-        } else {
-            console.log("Log Successfully Added");
-        }
-        db2.close();
-    });
-}
-
 const getIntersect = (s1,s2) => {
     // const a1 = s1.trim().split(",")
     // const a2 = s2.trim().split(",")
@@ -52,4 +40,4 @@ const getIntersect = (s1,s2) => {
     return result.join(",");
 }
 
-module.exports = {getMacAddress, logInDatabase, getIntersect};
+module.exports = {getMacAddress, getIntersect};
