@@ -4,6 +4,7 @@
 const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
+const cors = require('cors') 
 
 const { login, addUser, isLoggedIn, ab, isAdmin } = require("./services/authentication_service.js");
 const { getIntersect } = require("./services/helper_service.js");
@@ -12,6 +13,9 @@ const { getLogs, logInDatabase } = require("./services/log_service.js");
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(cors({
+	origin : "*",
+})); 
 app.use(express.json());
 app.use(bodyParser.json());
 // For parsing application/x-www-form-urlencoded
@@ -58,7 +62,7 @@ ACCOUNTS_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,PhoneNumber,T
 // Define routes
 
 // Get all users
-app.get("/api/patients", (req, res) => {
+app.post("/api/patients", (req, res) => {
 	role = req.body.role;
 	console.log("role is ", role);
 	switch (role) {
@@ -67,7 +71,7 @@ app.get("/api/patients", (req, res) => {
 			db.all(`SELECT ${BACKOFFICE_SET} FROM patients`, (err, rows) => {
 				if (err) {
 					console.error(err.message);
-					res.status(500).json({ error: "Internal server error" });
+					res.status(500).json({ msg: "Internal server error" });
 				} else {
 					res.json({ cols: ACCOUNTS_SET.split(","), data: rows });
 				}
@@ -79,7 +83,7 @@ app.get("/api/patients", (req, res) => {
 			const doctor_email = req.body.email;
 			// const doctor_columns = req.body.columns;
 			if (!isLoggedIn(doctor_email, req.ip)) {
-				return res.status(401).json({ error: "Unauthorized" });
+				return res.status(401).json({ msg: "unauthorized" });
 			}
 			// const final_set_doctor = getIntersect(DOCTOR_SET,doctor_columns);
 			const final_set_doctor = DOCTOR_SET;
@@ -88,7 +92,7 @@ app.get("/api/patients", (req, res) => {
 				(err, rows) => {
 					if (err) {
 						console.error(err.message);
-						res.status(500).json({ error: "Internal server error" });
+						res.status(500).json({ msg: "Internal server error" });
 					} else {
 						res.json({ cols: DOCTOR_SET.split(","), data: rows });
 					}
@@ -97,10 +101,11 @@ app.get("/api/patients", (req, res) => {
 			break;
 
 		case "nurse":
-			const nurse_email = req.body.name;
+			const nurse_name = req.body.name;
+			const nurse_email = req.body.email;
 			const nurse_columns = req.body.columns;
 			if (!isLoggedIn(nurse_email, req.ip)) {
-				return res.status(401).json({ error: "Unauthorized" });
+				return res.status(401).json({ msg: "unauthorized" });
 			}
 			// const final_set_nurse = getIntersect(NURSE_SET,nurse_columns);
 			const final_set_nurse = NURSE_SET;
@@ -109,7 +114,7 @@ app.get("/api/patients", (req, res) => {
 				(err, rows) => {
 					if (err) {
 						console.error(err.message);
-						res.status(500).json({ error: "Internal server error" });
+						res.status(500).json({ msg: "Internal server error" });
 					} else {
 						res.json({ cols: NURSE_SET.split(","), data: rows });
 					}
@@ -121,14 +126,14 @@ app.get("/api/patients", (req, res) => {
 			const clerk_email = req.body.name;
 			// const clerk_columns = req.body.columns;
 			if (!isLoggedIn(clerk_email, req.ip)) {
-				return res.status(401).json({ error: "Unauthorized" });
+				return res.status(401).json({ msg: "unauthorized" });
 			}
 			// const final_set_clerk = getIntersect(CLERK_SET,clerk_columns);
 			const final_set_clerk = CLERK_SET;
 			db.all(`SELECT ${final_set_clerk} FROM patients`, (err, rows) => {
 				if (err) {
 					console.error(err.message);
-					res.status(500).json({ error: "Internal server error" });
+					res.status(500).json({ msg: "Internal server error" });
 				} else {
 					res.json({ cols: CLERK_SET.split(","), data: rows });
 				}
@@ -140,7 +145,7 @@ app.get("/api/patients", (req, res) => {
 			db.all(`SELECT ${ACCOUNTS_SET} FROM patients`, (err, rows) => {
 				if (err) {
 					console.error(err.message);
-					res.status(500).json({ error: "Internal server error" });
+					res.status(500).json({ msg: "Internal server error" });
 				} else {
 					res.json({ cols: ACCOUNTS_SET.split(","), data: rows });
 				}
@@ -149,16 +154,17 @@ app.get("/api/patients", (req, res) => {
 
 		default:
 			console.log("Default Case");
-			db.all(`SELECT ${DOCTOR_SET} FROM patients`, (err, rows) => {
-				if (err) {
-					console.error(err.message);
-					res.status(500).json({ error: "Internal server error" });
-				} else {
-					res.json(rows);
-				}
-			});
+			// db.all(`SELECT ${DOCTOR_SET} FROM patients`, (err, rows) => {
+			// 	if (err) {
+			// 		console.error(err.message);
+			// 		res.status(500).json({ msg: "Internal server error" });
+			// 	} else {
+			// 		res.json(rows);
+			// 	}
+			// });
+			res.status(300).json({ msg: "unauthorized" });
 			break;
-		// res.status(300).json({ error: "Unauthorised" });
+		// res.status(300).json({ msg: "unauthorized" });
 		// break;
 	}
 });
@@ -170,7 +176,7 @@ app.post("/api/users/signup", async (req, res) => {
 		const wardnumber = req.body.wardnumber;
 	}
 	if (!email && !password && !role && email.length == 0) {
-		res.status(400).json({ error: "Name, Email, Password, Role is required" });
+		res.status(400).json({ msg: "Name, Email, Password, Role is required" });
 	} else {
 		const ip = req.ip;
 		const msg = await addUser(name, email, password, role, ip, wardnumber);
@@ -179,10 +185,10 @@ app.post("/api/users/signup", async (req, res) => {
 });
 
 // LOG IN
-app.get("/api/users/login", async (req, res) => {
+app.post("/api/users/login", async (req, res) => {
 	const { name, email, password, role } = req.body;
-	if (!name && !email && !password && !role && email.length == 0) {
-		res.status(400).json({ error: "Name, Email, Password, Role is required" });
+	if (!name && !email && !password && !role) {
+		res.status(400).json({ msg: "Name, Email, Password, Role is required" });
 	} else {
 		const msg = await login(name, email, password, role);
 		res.status(201).json(msg);
@@ -190,25 +196,25 @@ app.get("/api/users/login", async (req, res) => {
 });
 
 // Get logs
-app.get("/api/admin/getlogs", async (req, res) => {
+app.post("/api/admin/getlogs", async (req, res) => {
 	if (!isAdmin(req.body.adminKey)) {
-		return res.status(401).json({ error: "Unauthorized" });
+		return res.status(401).json({ msg: "unauthorized" });
 	}
 	const logs = await getLogs();
 	res.json(logs);
 });
 
 // Get all users
-app.get("/api/admin/getusers/", (req, res) => {
+app.post("/api/admin/getusers/", (req, res) => {
 	if (!isAdmin(req.body.adminKey)) {
-		return res.status(401).json({ error: "Unauthorized" });
+		return res.status(401).json({ msg: "unauthorized" });
 	}
 	db.all("SELECT * FROM users", (err, row) => {
 		if (err) {
 			console.error(err.message);
-			res.status(500).json({ error: "Internal server error" });
+			res.status(500).json({ msg: "Internal server error" });
 		} else if (!row) {
-			res.status(404).json({ error: "No user found" });
+			res.status(404).json({ msg: "No user found" });
 		} else {
 			res.json(row);
 		}
@@ -216,14 +222,14 @@ app.get("/api/admin/getusers/", (req, res) => {
 });
 
 // ADMIN DELETE USER
-app.get("/api/admin/deleteuser", async (req, res) => {
+app.post("/api/admin/deleteuser", async (req, res) => {
 	if (!isAdmin(req.body.adminKey)) {
-		return res.status(401).json({ error: "Unauthorized" });
+		return res.status(401).json({ msg: "unauthorized" });
 	}
 	db.all(`DELETE FROM users where email="${req.body.email}"`, (err, row) => {
 		if (err) {
 			console.error(err.message);
-			res.status(500).json({ error: "Internal server error" });
+			res.status(500).json({ msg: "Internal server error" });
 		} else {
 			res.json({code:"ud", msg:"User deleted successfully"});
 		}
@@ -231,20 +237,28 @@ app.get("/api/admin/deleteuser", async (req, res) => {
 });
 
 // Get all patients
-app.get("/api/admin/getpatients/", (req, res) => {
+app.post("/api/admin/getpatients/", (req, res) => {
 	if (!isAdmin(req.body.adminKey)) {
-		return res.status(401).json({ error: "Unauthorized" });
+		return res.status(401).json({ msg: "unauthorized" });
 	}
 	db.all("SELECT * FROM patients", (err, rows) => {
 		if (err) {
 			console.error(err.message);
-			res.status(500).json({ error: "Internal server error" });
+			res.status(500).json({ msg: "Internal server error" });
 		} else if (!rows) {
-			res.status(404).json({ error: "No user found" });
+			res.status(404).json({ msg: "No user found" });
 		} else {
 			res.json({cols: ADMIN_SET.split(","), data: rows});
 		}
 	});
+});
+
+// check If is admin
+app.post("/api/admin/isadmin/", (req, res) => {
+	if (!isAdmin(req.body.adminKey)) {
+		return res.status(401).json({ msg: "unauthorized" });
+	}
+	res.json({code:"isadmin", msg:"Admin is authorized"});
 });
 
 // // Get a single user by ID
@@ -253,9 +267,9 @@ app.get("/api/admin/getpatients/", (req, res) => {
 // 	db.get("SELECT * FROM users WHERE id = ?", [id], (err, row) => {
 // 		if (err) {
 // 			console.error(err.message);
-// 			res.status(500).json({ error: "Internal server error" });
+// 			res.status(500).json({ msg: "Internal server error" });
 // 		} else if (!row) {
-// 			res.status(404).json({ error: "User not found" });
+// 			res.status(404).json({ msg: "User not found" });
 // 		} else {
 // 			res.json(row);
 // 		}
@@ -266,12 +280,12 @@ app.get("/api/admin/getpatients/", (req, res) => {
 // app.post("/api/users", (req, res) => {
 // 	const { name } = req.body;
 // 	if (!name) {
-// 		res.status(400).json({ error: "Name is required" });
+// 		res.status(400).json({ msg: "Name is required" });
 // 	} else {
 // 		db.run("INSERT INTO users (name) VALUES (?)", [name], function (err) {
 // 			if (err) {
 // 				console.error(err.message);
-// 				res.status(500).json({ error: "Internal server error" });
+// 				res.status(500).json({ msg: "Internal server error" });
 // 			} else {
 // 				res.status(201).json({ id: this.lastID, name });
 // 			}

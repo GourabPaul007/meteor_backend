@@ -23,7 +23,7 @@ const login = async (name, email, password, role, ipAddress) => {
         const logData = `${new Date().toLocaleString()} - ${email} with role ${role} tried logging in, but user with this email is already logged in - IP Address: ${ipAddress} MAC Address: ${ipAddress}`;
         logInDatabase(logData);
         const msg = 'user with this email is already logged in: ' + loggedInUsers[email];
-        return {msg:msg};
+        return {code:"uali", msg:msg};
     }
     // NORMAL LOG IN
     else {
@@ -35,7 +35,7 @@ const login = async (name, email, password, role, ipAddress) => {
             logInDatabase(logData);
             delete loggedInUsers[email];
             console.log(`User ${email} has been logged out.`);
-        }, 1 * 60 * 1000); // 10 minutes in milliseconds
+        }, 10 * 60 * 1000); // 10 minutes in milliseconds
 
         const logData = `${new Date().toLocaleString()} - ${email} with role ${role} logged in - IP Address: ${ipAddress} MAC Address: ${ipAddress}`;
         logInDatabase(logData);
