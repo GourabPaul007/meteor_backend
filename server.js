@@ -174,6 +174,7 @@ app.post("/api/patients", (req, res) => {
 });
 
 // SIGN UP
+// TODO: ADD LOGS
 app.post("/api/users/signup", async (req, res) => {
 	const { name, email, password, role, wardnumber } = req.body;
 	if (req.body.wardnumber) {
