@@ -5,8 +5,7 @@ const sqlite3 = require("sqlite3").verbose();
 const getLogs = async () => {
     const db = new sqlite3.Database("database.db");
     return new Promise((resolve, reject) => {
-        db.all("SELECT * FROM logs", (err, rows) => {
-            console.log(rows);
+        db.all("SELECT * FROM logs ORDER BY rowid DESC", (err, rows) => {
             if (err) {
                 console.error(err.message);
                 reject({ error: "Internal server error, " + err.message });

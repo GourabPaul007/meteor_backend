@@ -56,7 +56,7 @@ DOCTOR_SET = `Name,BedNumber,RoomNumber,WardNumber,Disease,Medication,WardInchar
 NURSE_SET = `Name,BedNumber,RoomNumber,WardNumber,Disease,Medication,AdmissionDate,Nurse,LastExaminer,PhoneNumber,VIP,StaffQuota,DischargeDate`
 CLERK_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,Nurse,LastExaminer,PhoneNumber,DischargeDate`;
 ACCOUNTS_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,PhoneNumber,TotalEstimatedCost,TotalPayment,BalanceDue,AdvancePayment,VIP,StaffQuota,DischargeDate`;
-
+WARD_SET = `Name,BedNumber,RoomNumber,WardNumber,Disease,Medication,WardIncharge,AdmissionDate,Nurse,LastExaminer,PhoneNumber,AdvancePayment,VIP,StaffQuota,DischargeDate`;
 
 
 // Define routes
@@ -64,7 +64,11 @@ ACCOUNTS_SET = `Name,BedNumber,RoomNumber,WardNumber,AdmissionDate,PhoneNumber,T
 // Get all users
 app.post("/api/patients", (req, res) => {
 	role = req.body.role;
+	email = req.body.email;
 	console.log("role is ", role);
+	if (!isLoggedIn(email, req.ip)) {
+		return res.status(401).json({ msg: "unauthorized" });
+	}
 	switch (role) {
 		case "backoffice":
 			// nurse_name = req.body.nurse_name;
@@ -82,9 +86,6 @@ app.post("/api/patients", (req, res) => {
 			const doctor_name = req.body.name;
 			const doctor_email = req.body.email;
 			// const doctor_columns = req.body.columns;
-			if (!isLoggedIn(doctor_email, req.ip)) {
-				return res.status(401).json({ msg: "unauthorized" });
-			}
 			// const final_set_doctor = getIntersect(DOCTOR_SET,doctor_columns);
 			const final_set_doctor = DOCTOR_SET;
 			db.all(
@@ -102,11 +103,7 @@ app.post("/api/patients", (req, res) => {
 
 		case "nurse":
 			const nurse_name = req.body.name;
-			const nurse_email = req.body.email;
 			const nurse_columns = req.body.columns;
-			if (!isLoggedIn(nurse_email, req.ip)) {
-				return res.status(401).json({ msg: "unauthorized" });
-			}
 			// const final_set_nurse = getIntersect(NURSE_SET,nurse_columns);
 			const final_set_nurse = NURSE_SET;
 			db.all(
@@ -123,11 +120,6 @@ app.post("/api/patients", (req, res) => {
 			break;
 
 		case "clerk":
-			const clerk_email = req.body.name;
-			// const clerk_columns = req.body.columns;
-			if (!isLoggedIn(clerk_email, req.ip)) {
-				return res.status(401).json({ msg: "unauthorized" });
-			}
 			// const final_set_clerk = getIntersect(CLERK_SET,clerk_columns);
 			const final_set_clerk = CLERK_SET;
 			db.all(`SELECT ${final_set_clerk} FROM patients`, (err, rows) => {
@@ -148,6 +140,18 @@ app.post("/api/patients", (req, res) => {
 					res.status(500).json({ msg: "Internal server error" });
 				} else {
 					res.json({ cols: ACCOUNTS_SET.split(","), data: rows });
+				}
+			});
+			break;
+
+		case "wardincharge":
+			ward_number = req.body.wardnumber;
+			db.all(`SELECT ${WARD_SET} FROM patients WHERE WardNumber=${ward_number}`, (err, rows) => {
+				if (err) {
+					console.error(err.message);
+					res.status(500).json({ msg: "Internal server error" });
+				} else {
+					res.json({ cols: WARD_SET.split(","), data: rows });
 				}
 			});
 			break;
@@ -176,7 +180,7 @@ app.post("/api/users/signup", async (req, res) => {
 		const wardnumber = req.body.wardnumber;
 	}
 	if (!email && !password && !role && email.length == 0) {
-		res.status(400).json({ msg: "Name, Email, Password, Role is required" });
+		res.status(400).json({code:"ned", msg: "Name, Email, Password, Role is required" });
 	} else {
 		const ip = req.ip;
 		const msg = await addUser(name, email, password, role, ip, wardnumber);
@@ -209,14 +213,14 @@ app.post("/api/admin/getusers/", (req, res) => {
 	if (!isAdmin(req.body.adminKey)) {
 		return res.status(401).json({ msg: "unauthorized" });
 	}
-	db.all("SELECT * FROM users", (err, row) => {
+	db.all("SELECT * FROM users", (err, rows) => {
 		if (err) {
 			console.error(err.message);
 			res.status(500).json({ msg: "Internal server error" });
-		} else if (!row) {
+		} else if (!rows) {
 			res.status(404).json({ msg: "No user found" });
 		} else {
-			res.json(row);
+			res.json({cols:["email", "name", "password", "role", "wardnumber"], rows:rows});
 		}
 	});
 });
@@ -231,6 +235,7 @@ app.post("/api/admin/deleteuser", async (req, res) => {
 			console.error(err.message);
 			res.status(500).json({ msg: "Internal server error" });
 		} else {
+			logInDatabase(`User ${req.body.email} has been deleted by admin`);
 			res.json({code:"ud", msg:"User deleted successfully"});
 		}
 	});
@@ -261,37 +266,22 @@ app.post("/api/admin/isadmin/", (req, res) => {
 	res.json({code:"isadmin", msg:"Admin is authorized"});
 });
 
-// // Get a single user by ID
-// app.get("/api/users/:id", (req, res) => {
-// 	const { id } = req.params;
-// 	db.get("SELECT * FROM users WHERE id = ?", [id], (err, row) => {
-// 		if (err) {
-// 			console.error(err.message);
-// 			res.status(500).json({ msg: "Internal server error" });
-// 		} else if (!row) {
-// 			res.status(404).json({ msg: "User not found" });
-// 		} else {
-// 			res.json(row);
-// 		}
-// 	});
-// });
+// check If is admin
+app.post("/api/admin/runquery/", (req, res) => {
+	if (!isAdmin(req.body.adminKey)) {
+		return res.status(401).json({ msg: "unauthorized" });
+	}
+	db.all(req.body.query, (err, rows) => {
+		if (err) {
+			console.error(err.message);
+			res.status(500).json({ code:"ens", msg: "Internal server error" });
+		} else {
+			res.json({code:"es", msg:"Execution Successful"});
+		}
+	});
+	
+});
 
-// // Create a new user
-// app.post("/api/users", (req, res) => {
-// 	const { name } = req.body;
-// 	if (!name) {
-// 		res.status(400).json({ msg: "Name is required" });
-// 	} else {
-// 		db.run("INSERT INTO users (name) VALUES (?)", [name], function (err) {
-// 			if (err) {
-// 				console.error(err.message);
-// 				res.status(500).json({ msg: "Internal server error" });
-// 			} else {
-// 				res.status(201).json({ id: this.lastID, name });
-// 			}
-// 		});
-// 	}
-// });
 
 // Start the server
 app.listen(PORT, () => {
