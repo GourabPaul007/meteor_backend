@@ -236,7 +236,7 @@ app.post("/api/admin/deleteuser", async (req, res) => {
 			console.error(err.message);
 			res.status(500).json({ msg: "Internal server error" });
 		} else {
-			logInDatabase(`User ${req.body.email} has been deleted by admin`);
+			logInDatabase(`${new Date().toLocaleString()} - User ${req.body.email} has been deleted by admin`);
 			res.json({code:"ud", msg:"User deleted successfully"});
 		}
 	});
