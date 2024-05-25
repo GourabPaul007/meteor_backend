@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors') 
 
 const { login, addUser, isLoggedIn, ab, isAdmin } = require("./services/authentication_service.js");
-const { getIntersect } = require("./services/helper_service.js");
+const { getIntersect, hashPassword } = require("./services/helper_service.js");
 const { getLogs, logInDatabase } = require("./services/log_service.js");
 
 // Initialize Express app
@@ -184,7 +184,8 @@ app.post("/api/users/signup", async (req, res) => {
 		res.status(400).json({code:"ned", msg: "Name, Email, Password, Role is required" });
 	} else {
 		const ip = req.ip;
-		const msg = await addUser(name, email, password, role, ip, wardnumber);
+		const hashedPassword = hashPassword(password);
+		const msg = await addUser(name, email, hashedPassword, role, ip, wardnumber);
 		res.status(201).json(msg);
 	}
 });
@@ -195,7 +196,8 @@ app.post("/api/users/login", async (req, res) => {
 	if (!name && !email && !password && !role) {
 		res.status(400).json({ msg: "Name, Email, Password, Role is required" });
 	} else {
-		const msg = await login(name, email, password, role);
+		const hashedPassword = hashPassword(password);
+		const msg = await login(name, email, hashedPassword, role);
 		res.status(201).json(msg);
 	}
 });
@@ -228,7 +230,7 @@ app.post("/api/admin/getusers/", (req, res) => {
 
 // ADMIN DELETE USER
 app.post("/api/admin/deleteuser", async (req, res) => {
-	if (!isAdmin(req.body.adminKey)) {
+	if (!isAdmin(req.body.adminKey)) {a
 		return res.status(401).json({ msg: "unauthorized" });
 	}
 	db.all(`DELETE FROM users where email="${req.body.email}"`, (err, row) => {

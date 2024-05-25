@@ -1,5 +1,7 @@
 const sqlite3 = require("sqlite3").verbose();
 const { exec } = require('child_process');
+const bcrypt = require('bcrypt');
+
 
 async function getMacAddress(ipAddress) {
     return new Promise((resolve, reject) => {
@@ -40,4 +42,22 @@ const getIntersect = (s1,s2) => {
     return result.join(",");
 }
 
-module.exports = {getMacAddress, getIntersect};
+const hashPassword = (plaintextPassword) => {
+    const crypto = require('crypto');
+    const hash = crypto.createHash('sha256');
+    hash.update(plaintextPassword);
+    const hashedPassword = hash.digest('hex');
+    console.log(hashedPassword);
+    return hashedPassword;
+    // const saltRounds = 10;
+    // bcrypt.hash(plaintextPassword, saltRounds, function(err, hash) {
+    //     console.log("hash", hash);
+    //     if (err) {
+    //         console.log(err);
+    //         return null;
+    //     }
+    //     return hash;
+    // });
+}
+
+module.exports = {getMacAddress, getIntersect, hashPassword};
